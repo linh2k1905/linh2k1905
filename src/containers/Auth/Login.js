@@ -5,6 +5,7 @@ import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import { handelLoginAPI } from '../../services/userService';
 import './Login.scss';
+import { userLoginSuccess } from '../../store/actions';
 //oimport { FormattedMessage } from 'react-intl';
 class Login extends Component {
     constructor(props) {
@@ -38,7 +39,21 @@ class Login extends Component {
             errorMessage: ''
         })
         try {
-            await handelLoginAPI(this.state.username, this.state.password)
+            let data = await handelLoginAPI(this.state.username, this.state.password)
+            console.log(data)
+            if (data && data.errorCode !== 0) {
+                this.setState({
+                    errorMessage: data.messageCode
+                })
+            }
+            if (data && data.errorCode === 0) {
+                this.props.userLoginSuccess(data.user)
+                console.log('login successfully')
+            }
+
+
+
+
 
         } catch (error) {
             if (error.response) {
@@ -122,8 +137,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+
+        //userLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
     };
 };
 

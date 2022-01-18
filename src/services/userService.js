@@ -5,4 +5,7 @@ const handelLoginAPI = (email, password) => {
         , password: password
     });
 }
-export { handelLoginAPI }
+const getAllUser = (idUser) => {
+    return axios.get(`/api/get-all-users?id=${idUser}`)
+}
+export { handelLoginAPI, getAllUser }
