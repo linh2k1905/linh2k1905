@@ -6,6 +6,10 @@ const handelLoginAPI = (email, password) => {
     });
 }
 const getAllUser = (idUser) => {
-    return axios.get(`/api/get-all-users?id=${idUser}`)
+    return axios.get(`/api/get-all-users?id=${idUser}`);
 }
-export { handelLoginAPI, getAllUser }
+const createNewUserService = (data) => {
+    console.log(data);
+    return axios.post('/api/create-new-user', data);
+}
+export { handelLoginAPI, getAllUser, createNewUserService }

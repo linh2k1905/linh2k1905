@@ -44,3 +44,41 @@
     color: rgb(199, 13, 22)!important;
     }
 }
+.modal-user-container{
+  .modal-content{
+    .modal-header{
+     
+        button{
+          background: rgb(211, 11, 11) !important;
+          color: rgb(19, 1, 1);
+          border:none;
+          border-radius: 3px;
+          width: 30px;
+          font-size: 18px;
+        }
+
+    }
+    
+
+  
+}
+  .modal-user-body{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  .input-container{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+    &.max-width-input{
+      width: 100%;
+    }
+    input{
+      border-radius: 3px;
+      height: 30px;
+      border: 1px solid grey;
+      outline: none;
+      padding: 0 10px;
+    }
+  }
+}}
